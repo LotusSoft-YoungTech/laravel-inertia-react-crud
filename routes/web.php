@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Products;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -21,10 +22,12 @@ Route::get('/', function () {
 });
 Route::get('/product', [ProductsController::class, 'index'])->name('product.index'); //GET ALL PRODUCTS 
 // Route::get('/product/create', [ProductsController::class, 'create'])->name('product.create'); //GET ALL PRODUCTS 
-Route::get('/product/edit/{id}', [ProductsController::class, 'edit'])->name('product.edit'); //GET ALL PRODUCTS 
-Route::post('/product', [ProductsController::class, 'store'])->name('product.store'); //CREATE POSTS
-Route::post('/product/{id}', [ProductsController::class, 'update'])->name('product.update'); //update POSTS
-Route::delete('/product/{id}', [ProductsController::class, 'destroy'])->name('product.delete'); //CREATE POSTS
+Route::get('/product/edit/{id}', [ProductsController::class, 'edit'])->middleware(['auth', 'verified'])->name('product.edit'); //get one PRODUCTS 
+Route::post('/product', [ProductsController::class, 'store'])->middleware(['auth', 'verified'])->name('product.store'); //CREATE POSTS
+Route::post('/product/{id}', [ProductsController::class, 'update'])->middleware(['auth', 'verified'])->name('product.update'); //update product
+Route::delete('/product/{id}', [ProductsController::class, 'destroy'])->middleware(['auth', 'verified'])->name('product.delete'); //delete product
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,24 +40,26 @@ Route::delete('/product/{id}', [ProductsController::class, 'destroy'])->name('pr
 */
 
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    $products = Products::all();
+    return Inertia::render('products/index',compact('products'));
+    // return Inertia::render('products.index', [
+    //     'canLogin' => Route::has('login'),
+    //     'canRegister' => Route::has('register'),
+    //     'laravelVersion' => Application::VERSION,
+    //     'phpVersion' => PHP_VERSION,
+    // ]);
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    $products = Products::all();
+    return Inertia::render('Dashboard',compact('products'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/product/create', [ProductsController::class, 'create'])->name('product.create'); //GET ALL PRODUCTS 
-
+    Route::get('/product/create', [ProductsController::class, 'create'])->name('product.create');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

@@ -52,7 +52,7 @@ class ProductsController extends Controller
             $requestedData['image'] = $imageURL;
             Products::create($requestedData);
         }
-        return redirect("/product")->with('alert-success', 'Product created successfully.');
+        return redirect("/dashboard")->with('alert-success', 'Product created successfully.');
     }
     /**
      * Display the specified resource.
@@ -76,22 +76,7 @@ class ProductsController extends Controller
     public function update(UpdateProductRequest $request, Products $product)
     {
 
-        // $request->validate(
-        //     [
-                // "name" => "required|max:255",
-                // "description" => "required",
-                // 'brand' => 'required',
-                // "cost_price" => 'required',
-                // "selling_price" => 'required',
-                // "minimum_stock" => 'required',
-                // "total_stock" => 'required',
-                // 'image' => 'nullable|image|mimes:jpeg,jpg,png,svg,webp|max:2000',
-        //     ]
-        // );
-
         $product = Products::find($request->id);
-        // dd($product);
-
         $requestedData = $request->all();
         if ($request->image !== null) {
             $image = $request->file('image');
@@ -108,10 +93,8 @@ class ProductsController extends Controller
             $requestedData = $request->except('image');
         }
         $product->update($requestedData);
-        return redirect("/product")->with('alert-success', 'Product Updated Success fully successfully.');
+        return redirect("/dashboard")->with('alert-success', 'Product Updated Success fully successfully.');
     }
-
-
 
 
 
@@ -124,6 +107,6 @@ class ProductsController extends Controller
             return "no such file";
         }
         $product->delete();
-        return redirect("/product")->with('alert-success', 'Product deleted successfully.');
+        return redirect("/dashboard")->with('alert-success', 'Product deleted successfully.');
     }
 }
