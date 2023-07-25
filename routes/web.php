@@ -20,7 +20,7 @@ Route::get('/', function () {
     return Inertia::render('Welcome');
 });
 Route::get('/product', [ProductsController::class, 'index'])->name('product.index'); //GET ALL PRODUCTS 
-Route::get('/product/create', [ProductsController::class, 'create'])->name('product.create'); //GET ALL PRODUCTS 
+// Route::get('/product/create', [ProductsController::class, 'create'])->name('product.create'); //GET ALL PRODUCTS 
 Route::get('/product/edit/{id}', [ProductsController::class, 'edit'])->name('product.edit'); //GET ALL PRODUCTS 
 Route::post('/product', [ProductsController::class, 'store'])->name('product.store'); //CREATE POSTS
 Route::post('/product/{id}', [ProductsController::class, 'update'])->name('product.update'); //update POSTS
@@ -53,6 +53,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/product/create', [ProductsController::class, 'create'])->name('product.create'); //GET ALL PRODUCTS 
+
 });
 
 require __DIR__.'/auth.php';
