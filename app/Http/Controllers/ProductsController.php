@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateProductRequest;
+use App\Http\Requests\UpdateProductRequest;
 use Inertia\Inertia;
 use App\Models\Products;
 use Illuminate\Http\Request;
@@ -32,23 +34,9 @@ class ProductsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateProductRequest $request)
     {
-
         // protected $fillable =['name','description','brand','cost-price','selling-price','image','total-stock','minimum-stock'];
-        $request->validate(
-            [
-                "name" => "required|unique:products|max:255",
-                "description" => "required",
-                'brand' => 'required',
-                "cost_price" => 'required',
-                "selling_price" => 'required',
-                "minimum_stock" => 'required',
-                "total_stock" => 'required',
-                'image' => 'nullable|image|mimes:jpeg,jpg,png,svg,webp|max:2000',
-            ]
-        );
-
         $requestedData = $request->all();
         $image = $request->file('image');
         $imagePath = null;
@@ -85,28 +73,30 @@ class ProductsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Products $product)
+    public function update(UpdateProductRequest $request, Products $product)
     {
-        $request->validate(
-            [
-                "name" => "required|max:255",
-                "description" => "required",
-                'brand' => 'required',
-                "cost_price" => 'required',
-                "selling_price" => 'required',
-                "minimum_stock" => 'required',
-                "total_stock" => 'required',
-                'image' => 'nullable|image|mimes:jpeg,jpg,png,svg,webp|max:2000',
-            ]
-        );
+
+        // $request->validate(
+        //     [
+                // "name" => "required|max:255",
+                // "description" => "required",
+                // 'brand' => 'required',
+                // "cost_price" => 'required',
+                // "selling_price" => 'required',
+                // "minimum_stock" => 'required',
+                // "total_stock" => 'required',
+                // 'image' => 'nullable|image|mimes:jpeg,jpg,png,svg,webp|max:2000',
+        //     ]
+        // );
+
         $product = Products::find($request->id);
+        // dd($product);
+
         $requestedData = $request->all();
         if ($request->image !== null) {
-            // unlink(base_path('/storage/app/public/images/' . $product->image));
             $image = $request->file('image');
             unlink(base_path("public/" . $product->image));
             $imageName = time() . '_' . $image->getClientOriginalName();
-            // dd($request->file('image'));
             $newImage = Image::make($image)->resize(800, 800, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
@@ -120,6 +110,11 @@ class ProductsController extends Controller
         $product->update($requestedData);
         return redirect("/product")->with('alert-success', 'Product Updated Success fully successfully.');
     }
+
+
+
+
+
     public function destroy(Request $request)
     {
         $product = Products::find($request->id);

@@ -1,6 +1,6 @@
 import React from "react";
 import { Head, usePage, Link, InertiaLink } from "@inertiajs/inertia-react";
-import { Inertia, route } from "@inertiajs/inertia";
+import { Inertia } from "@inertiajs/inertia";
 import { router } from "@inertiajs/react";
 
 function index({ products }) {
@@ -12,14 +12,13 @@ function index({ products }) {
             // Inertia.delete('product.delete');
         }
     };
-
     return (
         <div className="container">
-            <Head title="Product lists" />
-            {/* <a className="btn btn-primary my-5" href={ route('product.create') }>
-                Add New Product
-            </a> */}
-            <Link className="btn btn-primary my-5" href="/product/create">
+            {/* <Head title="Product lists" /> */}
+            <Link
+                className="btn btn-primary my-5"
+                href={route("product.create")}
+            >
                 Create Product
             </Link>
             <div className="row flex-column align-items-center">
@@ -67,9 +66,7 @@ function index({ products }) {
 
                                     <a
                                         className="p-2"
-                                        // href={ route('/product/' . product.id . '/edit') }
-                                        // onClick={() => handleEdit(product.id)}
-                                        href={"/product/edit/" + product.id}
+                                        href={ route("product.edit", product.id) }
                                     >
                                         <i className="fa-solid fa-pen-to-square"></i>
                                     </a>

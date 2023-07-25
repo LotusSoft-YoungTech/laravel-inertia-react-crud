@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { usePage } from "@inertiajs/inertia-react";
-import { Inertia } from "@inertiajs/inertia";
-import { useForm } from "@inertiajs/react";
+import React from "react";
+import { useForm, usePage } from "@inertiajs/react";
 
-function edit({ errors }) {
+function edit() {
     const { product } = usePage().props;
-    const [state, setState] = useState({
+
+    const { data, setData, errors, post, progress } = useForm({
         name: product.name || "",
         description: product.description || "",
         brand: product.brand || "",
@@ -18,41 +17,17 @@ function edit({ errors }) {
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        setState((prevProps) => ({
-            ...prevProps,
-            [name]: value,
-        }));
+        setData((prevData) => ({ ...prevData, [name]: value }));
     };
 
     const handleFileChange = (e) => {
-        setState((prevProps) => ({
-            ...prevProps,
-            ["image"]: e.target.files[0],
-        }));
+        setData("image", e.target.files[0]);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(state);
-        // console.log(setData["image"]);
-        // console.log(data, product);
-        // console.log(state);
-        Inertia.post("/product/" + product.id, state);
-        // patch(`/product/${product.id}`, {
-        //     preserveScroll: true,
-        //     forceFormData: true,
-        //     onSuccess: () => console.log("success message", props),
-        // });
-        // post("/product/", product.id, {
-        //     onSuccess: () => {
-        //         // Redirect or do any other action on successful form submission
-        //         console.log("success product creation");
-        //     },
-        // });
-        // put('/product/'+product.id,\{
-        //     forceFormData: true,
-        //     preserveScroll: true,
-        // });
+        // return console.log(product);
+        post(route("product.update", product.id));
     };
     return (
         <div className="container ">
@@ -73,7 +48,7 @@ function edit({ errors }) {
                             className="form-control"
                             id="name"
                             name="name"
-                            value={state.name}
+                            value={data.name}
                             onChange={handleInputChange}
                         />
                         <div>
@@ -94,7 +69,7 @@ function edit({ errors }) {
                             className="form-control"
                             id="description"
                             rows="3"
-                            defaultValue={state.description}
+                            defaultValue={data.description}
                             // value={data.name}
                             onChange={handleInputChange}
                         ></textarea>
@@ -114,7 +89,7 @@ function edit({ errors }) {
                             className="form-control"
                             id="brand"
                             name="brand"
-                            value={state.brand}
+                            value={data.brand}
                             onChange={handleInputChange}
                         />
                     </div>
@@ -131,7 +106,7 @@ function edit({ errors }) {
                             type="number"
                             className="form-control"
                             id="cp"
-                            value={state.cost_price}
+                            value={data.cost_price}
                             placeholder="Rs 1500"
                             onChange={handleInputChange}
                         />
@@ -151,7 +126,7 @@ function edit({ errors }) {
                             autoComplete=""
                             className="form-control"
                             id="sp"
-                            value={state.selling_price}
+                            value={data.selling_price}
                             placeholder="Rs 1500"
                             onChange={handleInputChange}
                         />
@@ -171,7 +146,7 @@ function edit({ errors }) {
                             type="number"
                             className="form-control"
                             id="total-stock"
-                            value={state.total_stock}
+                            value={data.total_stock}
                             placeholder="Rs 1500"
                             onChange={handleInputChange}
                         />
@@ -192,7 +167,7 @@ function edit({ errors }) {
                             className="form-control"
                             id="minimum-stock"
                             placeholder="Rs 1500"
-                            value={state.minimum_stock}
+                            value={data.minimum_stock}
                             onChange={handleInputChange}
                         />
                     </div>
@@ -212,11 +187,11 @@ function edit({ errors }) {
                             name="image"
                             onChange={handleFileChange}
                         />
-                        {/* {progress && (
+                        {progress && (
                             <progress value={progress.percentage} max="100">
                                 {progress.percentage}%
                             </progress>
-                        )} */}
+                        )}
                     </div>
                     {errors && errors.image && (
                         <div className="error text-danger">{errors.image}</div>

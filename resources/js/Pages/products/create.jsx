@@ -1,10 +1,8 @@
 import React from "react";
-// import { router } from "@inertiajs/react";
-import { useForm, router } from "@inertiajs/inertia-react";
-// import {  } from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
 
 function create() {
-    const { data, setData, post, errors,progress } = useForm({
+    const { data, setData, post, reset, errors, progress } = useForm({
         name: "",
         description: "",
         brand: "",
@@ -22,13 +20,14 @@ function create() {
     const handleFileChange = (e) => {
         setData("image", e.target.files[0]);
     };
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        post("/product", {
-            onSuccess: () => {
-                // Redirect or do any other action on successful form submission
-                console.log("success product creation");
+        post(route("product.store"), {
+            preserveScroll: true,
+            onSuccess: () => reset(),
+            onError: (errors) => {
+                console.log(errors);
             },
         });
     };
@@ -40,7 +39,7 @@ function create() {
                     onSubmit={handleSubmit}
                     encType="multipart/form-data"
                 >
-                    <h1>Add new Product</h1>
+                    <h1 className="my-5">Add new Product</h1>
                     <div className="flash-message"></div>
                     <div>
                         <label htmlFor="name" className="form-label">
@@ -75,9 +74,7 @@ function create() {
                             defaultValue={data.description}
                             // value={data.name}
                             onChange={handleChange}
-                        >
-                            
-                        </textarea>
+                        ></textarea>
                     </div>
                     {errors.description && (
                         <div className="error text-danger">
@@ -173,7 +170,6 @@ function create() {
                             id="minimum-stock"
                             placeholder="Rs 1500"
                             value={data.minimum_stock}
-
                             onChange={handleChange}
                         />
                     </div>
