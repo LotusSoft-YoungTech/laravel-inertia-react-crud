@@ -30,14 +30,14 @@ function edit({ errors }) {
             ["image"]: e.target.files[0],
         }));
     };
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         // console.log(state);
         // console.log(setData["image"]);
         // console.log(data, product);
         // console.log(state);
-        Inertia.patch("/product/" + product.id,state);
+        Inertia.post("/product/" + product.id, state);
         // patch(`/product/${product.id}`, {
         //     preserveScroll: true,
         //     forceFormData: true,

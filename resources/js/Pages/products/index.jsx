@@ -5,7 +5,6 @@ import { router } from "@inertiajs/react";
 
 function index({ products }) {
     // const { url } = usePage();
-
     const handleDelete = (id) => {
         if (window.confirm("Are you sure you want to delete this product?")) {
             // router.visit(id, { method: "delete" });
@@ -52,9 +51,15 @@ function index({ products }) {
                                 <td>{product.total_stock}</td>
                                 <td>{product.minimum_stock}</td>
                                 <td>
-                                {/* <img src={ asset('storage/app/  /images/' . $product.image) } alt="Example Image" /> */}
+                                    <img
+                                        src={product.image}
+                                        alt="image"
+                                        style={{
+                                            height: "50px",
+                                            width: "75px",
+                                        }}
+                                    />
                                 </td>
-
                                 <td>
                                     {/* <InertiaLink
                                         // href={route("product.index")}
@@ -64,7 +69,7 @@ function index({ products }) {
                                         className="p-2"
                                         // href={ route('/product/' . product.id . '/edit') }
                                         // onClick={() => handleEdit(product.id)}
-                                        href={"/product/edit/"+product.id}
+                                        href={"/product/edit/" + product.id}
                                     >
                                         <i className="fa-solid fa-pen-to-square"></i>
                                     </a>
@@ -86,19 +91,6 @@ function index({ products }) {
                             </tr>
                         ))}
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>S.N</th>
-                            <th>Name</th>
-                            <th>Generic,Brand</th>
-                            <th>Cost Price(in Rs)</th>
-                            <th>Selling price(in Rs)</th>
-                            <th>total stock</th>
-                            <th>min-stock</th>
-                            <th>Description</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
                 </table>
             </div>
         </div>
