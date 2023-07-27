@@ -1,0 +1,28 @@
+.header{
+height: 50px;  
+background-color: #75d7ea;
+/* position:fixed; */
+width: 100%;
+padding:0;
+margin:0;
+}
+.hamburger{
+    color: rgb(24, 24, 24);
+    /* padding:5px; */
+    font-size: 30px;
+    /* font-size:21pt; */
+    font-weight: 900;
+    margin-top: 10px;
+}
+
+.drop_down{
+    background-color:rgb(253, 253, 253);
+    font-size: 27px;
+    margin-top: 2px;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    padding: 8px;
+    margin-right: 20px; 
+
+}

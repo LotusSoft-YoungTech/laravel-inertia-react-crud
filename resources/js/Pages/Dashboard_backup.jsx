@@ -3,6 +3,7 @@ import { Head, Link } from "@inertiajs/react";
 
 export default function Dashboard({ auth, products }) {
     return (
+        
         <AuthenticatedLayout
             user={auth.user}
             header={

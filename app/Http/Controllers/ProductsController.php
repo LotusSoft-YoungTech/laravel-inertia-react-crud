@@ -50,8 +50,9 @@ class ProductsController extends Controller
             $imagePath =   $newImage->save(storage_path('/app/public/images/' . $imageName));
             $imageURL = $imagePath ? Storage::url("images/" . $imageName) : null;
             $requestedData['image'] = $imageURL;
-            Products::create($requestedData);
         }
+        Products::create($requestedData);
+
         return redirect("/dashboard")->with('alert-success', 'Product created successfully.');
     }
     /**
@@ -75,12 +76,11 @@ class ProductsController extends Controller
      */
     public function update(UpdateProductRequest $request, Products $product)
     {
-
         $product = Products::find($request->id);
         $requestedData = $request->all();
         if ($request->image !== null) {
             $image = $request->file('image');
-            unlink(base_path("public/" . $product->image));
+            @unlink(base_path("public/" . $product->image));
             $imageName = time() . '_' . $image->getClientOriginalName();
             $newImage = Image::make($image)->resize(800, 800, function ($constraint) {
                 $constraint->aspectRatio();
@@ -102,7 +102,7 @@ class ProductsController extends Controller
     {
         $product = Products::find($request->id);
         if (asset('images/' . $product->image)) {
-            unlink(base_path("public/" . $product->image));
+            @unlink(base_path("public/" . $product->image));
         } else {
             return "no such file";
         }

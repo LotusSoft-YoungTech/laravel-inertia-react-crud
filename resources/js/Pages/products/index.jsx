@@ -1,7 +1,5 @@
 import React from "react";
-import { Head, usePage, Link, InertiaLink } from "@inertiajs/inertia-react";
-import { Inertia } from "@inertiajs/inertia";
-import { router } from "@inertiajs/react";
+import { Link } from "@inertiajs/inertia-react";
 
 function index({ products, auth }) {
     return (
@@ -9,11 +7,16 @@ function index({ products, auth }) {
             {(auth.user && (
                 <Link href={route("dashboard")} as="button" type="button">
                     <h1 className="btn btn-primary my-3">Link to dashBoard</h1>
-                </Link> 
-            )) || (
-                <Link href={route("dashboard")} as="button" type="button">
-                    <h1 className="btn btn-primary my-3">Login in</h1>
                 </Link>
+            )) || (
+                <div className="container">
+                    <Link href={route("dashboard")} as="button" type="button">
+                        <h1 className="btn btn-primary my-3">Login in</h1>
+                    </Link>
+                    <Link href={route("register")} as="button" type="button">
+                        <h1 className="btn btn-primary my-3 mx-2">Register</h1>
+                    </Link>
+                </div>
             )}
             <div className="row flex-column align-items-center">
                 <table id="product_table" className="table table-striped">
@@ -32,7 +35,6 @@ function index({ products, auth }) {
                     </thead>
                     <tbody>
                         {products.map((product) => (
-                            // <li key={product.id}>{product.name}</li>
                             <tr key={product.id}>
                                 <td>{product.id}</td>
                                 <td>{product.name}</td>

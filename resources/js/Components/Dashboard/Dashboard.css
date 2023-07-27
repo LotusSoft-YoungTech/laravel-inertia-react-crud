@@ -1,0 +1,8 @@
+.main-dashboard{
+    height: 90vh;
+    overflow: scroll;
+}
+.main-dashboard::-webkit-scrollbar {
+    display: none;
+  }
+

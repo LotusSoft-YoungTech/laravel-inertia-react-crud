@@ -3,7 +3,6 @@
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Products;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 /*
@@ -20,6 +19,7 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Welcome');
 });
+
 Route::get('/product', [ProductsController::class, 'index'])->name('product.index'); //GET ALL PRODUCTS 
 // Route::get('/product/create', [ProductsController::class, 'create'])->name('product.create'); //GET ALL PRODUCTS 
 Route::get('/product/edit/{id}', [ProductsController::class, 'edit'])->middleware(['auth', 'verified'])->name('product.edit'); //get one PRODUCTS 
@@ -41,18 +41,12 @@ Route::delete('/product/{id}', [ProductsController::class, 'destroy'])->middlewa
 
 Route::get('/', function () {
     $products = Products::all();
-    return Inertia::render('products/index',compact('products'));
-    // return Inertia::render('products.index', [
-    //     'canLogin' => Route::has('login'),
-    //     'canRegister' => Route::has('register'),
-    //     'laravelVersion' => Application::VERSION,
-    //     'phpVersion' => PHP_VERSION,
-    // ]);
+    return Inertia::render('products/index', compact('products'));
 });
 
 Route::get('/dashboard', function () {
     $products = Products::all();
-    return Inertia::render('Dashboard',compact('products'));
+    return Inertia::render('MainDashboard', compact('products'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
