@@ -6,10 +6,10 @@ import React from "react";
 export default function Layout({ children }) {
     return (
         <div>
-            {/* <Header /> */}
-            {/* <Sidebar /> */}
+            <Header />
+            <Sidebar />
             {children}
-            {/* <Footer />  */}
+            <Footer />
         </div>
     );
 }

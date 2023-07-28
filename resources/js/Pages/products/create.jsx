@@ -34,16 +34,13 @@ function create() {
     };
     return (
         <Dashboard>
-            <div className="container ">
-                <div className="row flex-column align-items-center">
-                    <form
-                        className="col-5 g-4"
-                        onSubmit={handleSubmit}
-                        encType="multipart/form-data"
-                    >
-                        <h1 className="">Add new Product</h1>
-                        <div className="flash-message"></div>
-                        <div>
+            <div className="card card-primary">
+                <div className="card-header">
+                    <h3 className="card-title">Create New Product</h3>
+                </div>
+                <form onSubmit={handleSubmit} encType="multipart/form-data">
+                    <div className="card-body">
+                        <div className="form-group">
                             <label htmlFor="name" className="form-label">
                                 Name
                             </label>
@@ -63,7 +60,7 @@ function create() {
                                 )}
                             </div>
                         </div>
-                        <div className="">
+                        <div className="form-group">
                             <label htmlFor="description" className="form-label">
                                 Description
                             </label>
@@ -82,7 +79,7 @@ function create() {
                                 {errors.description}
                             </div>
                         )}
-                        <div className="col-md-12">
+                        <div className="form-group">
                             <label htmlFor="brand" className="form-label">
                                 Genereic,Brand
                             </label>
@@ -101,7 +98,7 @@ function create() {
                                 {errors.brand}
                             </div>
                         )}
-                        <div className="col-12">
+                        <div className="form-group">
                             <label htmlFor="cp" className="form-label">
                                 Cost Price (in rs)
                             </label>
@@ -121,7 +118,7 @@ function create() {
                                 {errors.cost_price}
                             </div>
                         )}
-                        <div className="col-12">
+                        <div className="form-group">
                             <label htmlFor="sp" className="form-label">
                                 Selling Price (in rs)
                             </label>
@@ -141,7 +138,7 @@ function create() {
                                 {errors.selling_price}
                             </div>
                         )}
-                        <div className="col-12">
+                        <div className="form-group">
                             <label htmlFor="total_stock" className="form-label">
                                 Total stock
                             </label>
@@ -161,7 +158,7 @@ function create() {
                                 {errors.total_stock}
                             </div>
                         )}
-                        <div className="col-12">
+                        <div className="form-group">
                             <label
                                 htmlFor="minimum-stock"
                                 className="form-label"
@@ -184,36 +181,59 @@ function create() {
                                 {errors.minimum_stock}
                             </div>
                         )}
-                        <div className="mb-3">
-                            <label htmlFor="img" className="form-label">
-                                Product image
+
+                        <div className="form-group">
+                            <label htmlFor="exampleInputFile">
+                                ProductImage
                             </label>
-                            <input
-                                className="form-control"
-                                type="file"
-                                id="img"
-                                name="image"
-                                onChange={handleFileChange}
-                            />
-                            {progress && (
-                                <progress value={progress.percentage} max="100">
-                                    {progress.percentage}%
-                                </progress>
-                            )}
+                            <div className="input-group">
+                                <div className="custom-file">
+                                    <input
+                                        type="file"
+                                        className="custom-file-input"
+                                        id="img"
+                                        name="image"
+                                        onChange={handleFileChange}
+                                    />
+                                    <label
+                                        className="custom-file-label"
+                                        htmlFor="exampleInputFile"
+                                    >
+                                        Choose product image
+                                    </label>
+                                </div>
+                                <div className="input-group-append">
+                                    <span className="input-group-text">
+                                        Upload
+                                    </span>
+                                </div>
+                                {progress && (
+                                    <progress
+                                        value={progress.percentage}
+                                        max="100"
+                                    >
+                                        {progress.percentage}%
+                                    </progress>
+                                )}
+                            </div>
                         </div>
                         {errors && errors.image && (
                             <div className="error text-danger">
                                 {errors.image}
                             </div>
                         )}
-                        <div className="col-12">
-                            <button type="submit" className="btn btn-primary">
-                                Add new Product
-                            </button>
-                        </div>
+                    </div>
+                    {/* <!-- /.card-body --> */}
 
-                    </form>
-                </div>
+                    <div className="card-footer">
+                        <button
+                            type="submit"
+                            className="btn btn-primary bg-primary"
+                        >
+                            Submit
+                        </button>
+                    </div>
+                </form>
             </div>
         </Dashboard>
     );

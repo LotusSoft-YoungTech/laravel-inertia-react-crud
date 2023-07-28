@@ -1,8 +1,6 @@
-.main-dashboard{
-    height: 90vh;
-    overflow: scroll;
+.main_container{
+    /* background-color:red; */
+    overflow:scroll;
+    height:91vh;
+    margin-top: -13px;
 }
-.main-dashboard::-webkit-scrollbar {
-    display: none;
-  }
-

@@ -1,86 +1,202 @@
 import React from "react";
 import "./Sidebar.css";
 
-function Sidebar({ classname }) {
+function Sidebar() {
     return (
-        <>
-            <div className={"sidebar " + classname}>
-                <div className="logo_container">
-                    <img
-                        src="https://dynamic.brandcrowd.com/asset/logo/9b10e92b-fb36-4f10-8dd9-88ad49341c8e/logo-search-grid-1x?logoTemplateVersion=1&v=638091149117130000"
-                        alt=""
-                    />
-                    <h1>Admin Panel</h1>
-                </div>
-                <hr />
-                <div className="user_name">
-                    <i className="fa-regular fa-user  p-2 m-2 fs-3 rounded-circle bg-white"></i>
-                    <span className="fs-5 fw-bold">Kaushal ghimire </span>
-                </div>
-                <hr />
+            <aside className="main-sidebar sidebar-dark-primary elevation-4">
+                {/* <!-- Brand Logo --> */}
+                <a href="index3.html" className="brand-link">
+                    <img src="/dist/img/AdminLTELogo.png" className="brand-image img-circle elevation-3 " alt="fdf"  />
+                                      <span className="brand-text font-weight-light">AdminLTE 3</span>
+                </a>
 
-                <div className=" search input-group my-2 w-52 mx-1">
-                    <input
-                        type="text"
-                        className="form-control p-1"
-                        placeholder="search"
-                        aria-label="Recipient's username"
-                        aria-describedby="basic-addon2"
-                    />
-                    <span className="input-group-text" id="basic-addon2">
-                        <a href="#">
-                            <i className="fa-solid fa-magnifying-glass"></i>
-                        </a>
-                    </span>
-                </div>
-                <hr />
-                <div className="navigation_link">
-                    <ul className="">
-                        <li className="mb-3 ms-2 ">
-                            <a href="#" className="ps-1  fs-5">
-                                <i className="fa-solid fa-house pe-2"></i>
-                                <span > Banner Slider </span>
+                {/* <!-- Sidebar --> */}
+                <div className="sidebar">
+                    {/* <!-- Sidebar user panel (optional) --> */}
+                    <div className="user-panel mt-3 pb-3 mb-3 d-flex">
+                        <div className="image">
+                            <img
+                                src="dist/img/user2-160x160.jpg"
+                                className="img-circle elevation-2"
+                                alt="User Image"
+                            />
+                        </div>
+                        <div className="info">
+                            <a href="#" className="d-block">
+                                Alexander Pierce
                             </a>
-                        </li>
-                        <li className="mb-3 ms-2 ">
-                            <a href="#" className="ps-1  fs-5">
-                                <i className="fa-solid fa-book pe-2"></i>
-                                <span > Banner Slider </span>
-                            </a>
-                        </li>
-                        <li className="mb-3 ms-2 ">
-                            <a href="#" className="ps-1  fs-5">
-                                <i className="fa-solid fa-list pe-2"></i>
-                                <span > Banner Slider </span>
-                            </a>
-                        </li>  <li className="mb-3 ms-2 ">
-                            <a href="#" className="ps-1  fs-5">
-                                <i className="fa-solid fa-user pe-2"></i>
-                                <span > Banner Slider </span>
-                            </a>
-                        </li>  <li className="mb-3 ms-2 ">
-                            <a href="#" className="ps-1  fs-5">
-                                <i className="fa-solid fa-newspaper pe-2"></i>
-                                <span > Banner Slider </span>
-                            </a>
-                        </li>  <li className="mb-3 ms-2 ">
-                            <a href="#" className="ps-1  fs-5">
-                                <i className="fa-solid fa-location pe-2"></i>
-                                <span > Banner Slider </span>
-                            </a>
-                        </li>
-                        <li className="mb-3 ms-2 ">
-                            <a href="#" className="ps-1  fs-5">
-                                <i className="fa-solid fa-house pe-2"></i>
-                                <span > Banner Slider </span>
-                            </a>
-                        </li>
-                       
+                        </div>
+                    </div>
+
+                    {/* <!-- SidebarSearch Form --> */}
+                    <div className="form-inline">
+                        <div className="input-group" data-widget="sidebar-search">
+                            <input
+                                className="form-control form-control-sidebar"
+                                type="search"
+                                placeholder="Search"
+                                aria-label="Search"
+                            />
+                            <div className="input-group-append">
+                                <button className="btn btn-sidebar">
+                                    <i className="fas fa-search fa-fw"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* <!-- Sidebar Menu --> */}
+                    <nav className="sidebar_nav mt-2">
+                        <ul
+                            className="nav nav-pills nav-sidebar flex-column"
+                            data-widget="treeview"
+                            role="menu"
+                            data-accordion="false"
+                        >
                       
-                    </ul>
+                            <li className="nav-item menu-open">
+                                <a href="#" className="nav-link active">
+                                    <i className="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Starter Pages
+                                        <i className="right fas fa-angle-left"></i>
+                                    </p>
+                                </a>
+                                <ul className="nav nav-treeview">
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link active">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Active Page</p>
+                                        </a>
+                                    </li>
+                                    <li className="nav-item">
+                                        <a href="#" className="nav-link">
+                                            <i className="far fa-circle nav-icon"></i>
+                                            <p>Inactive Page</p>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li className="nav-item">
+                                <a href="#" className="nav-link">
+                                    <i className="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Simple Link
+                                        <span className="right badge badge-danger">
+                                            New
+                                        </span>
+                                    </p>
+                                </a>
+                            </li>
+
+                            <li className="nav-item">
+                                <a href="#" className="nav-link">
+                                    <i className="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Simple Link
+                                        <span className="right badge badge-danger">
+                                            New
+                                        </span>
+                                    </p>
+                                </a>
+                            </li> <li className="nav-item">
+                                <a href="#" className="nav-link">
+                                    <i className="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Simple Link
+                                        <span className="right badge badge-danger">
+                                            New
+                                        </span>
+                                    </p>
+                                </a>
+                            </li> <li className="nav-item">
+                                <a href="#" className="nav-link">
+                                    <i className="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Simple Link
+                                        <span className="right badge badge-danger">
+                                            New
+                                        </span>
+                                    </p>
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a href="#" className="nav-link">
+                                    <i className="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Simple Link
+                                        <span className="right badge badge-danger">
+                                            New
+                                        </span>
+                                    </p>
+                                </a>
+                            </li> <li className="nav-item">
+                                <a href="#" className="nav-link">
+                                    <i className="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Simple Link
+                                        <span className="right badge badge-danger">
+                                            New
+                                        </span>
+                                    </p>
+                                </a>
+                            </li> <li className="nav-item">
+                                <a href="#" className="nav-link">
+                                    <i className="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Simple Link
+                                        <span className="right badge badge-danger">
+                                            New
+                                        </span>
+                                    </p>
+                                </a>
+                            </li> <li className="nav-item">
+                                <a href="#" className="nav-link">
+                                    <i className="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Simple Link
+                                        <span className="right badge badge-danger">
+                                            New
+                                        </span>
+                                    </p>
+                                </a>
+                            </li> <li className="nav-item">
+                                <a href="#" className="nav-link">
+                                    <i className="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Simple Link
+                                        <span className="right badge badge-danger">
+                                            New
+                                        </span>
+                                    </p>
+                                </a>
+                            </li> <li className="nav-item">
+                                <a href="#" className="nav-link">
+                                    <i className="nav-icon fas fa-th"></i>
+                                    <p>
+                                        Simple Link
+                                        <span className="right badge badge-danger">
+                                            New
+                                        </span>
+                                    </p>
+                                </a>
+                            </li> <li className="nav-item">
+                                <a href="#" className="nav-link">
+                                    <i className="nav-icon fas fa-th"></i>
+                                    <p>
+                                        kaushal
+                                        <span className="right badge badge-danger">
+                                            New
+                                        </span>
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    {/* <!-- /.sidebar-menu --> */}
                 </div>
-            </div>
-        </>
+                {/* <!-- /.sidebar --> */}
+            </aside>
     );
 }
 export default Sidebar;

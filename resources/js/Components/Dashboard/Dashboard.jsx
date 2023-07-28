@@ -8,16 +8,10 @@ import Footer from "../Footer/Footer";
 export default function Dashboard({ children }) {
     return (
         <Layout>
-            <div className="container-fluid ">
-                <div className="row">
-                    <div className="col-2 p-0 ">
-                        <Sidebar className=" d-md-block d-none " />
-                    </div>
-                    <div className="col-md-10 p-0 ">
-                        <Header className="" />
-                        <div className="main-dashboard px-1 postion-relative ">
-                            {children}
-                        </div>
+            <div className="content-wrapper">
+                <div className="content-header">
+                    <div className="main_container container-fluid">
+                        {children}
                     </div>
                 </div>
             </div>
