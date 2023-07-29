@@ -1,5 +1,6 @@
 import React from "react";
-import { useForm } from "@inertiajs/react";
+import { Head, Link ,useForm} from "@inertiajs/react";
+
 import Dashboard from "@/Components/Dashboard/Dashboard";
 
 function create() {
@@ -35,6 +36,7 @@ function create() {
     return (
         <Dashboard>
             <div className="card card-primary">
+            <Link href="/dashboard" className="btn btn-secondary w-20 my-1">Go back</Link>    
                 <div className="card-header">
                     <h3 className="card-title">Create New Product</h3>
                 </div>
@@ -60,7 +62,7 @@ function create() {
                                 )}
                             </div>
                         </div>
-                        <div className="form-group mt-2">
+                        <div className="form-group ">
                             <label htmlFor="description" className="form-label">
                                 Description
                             </label>

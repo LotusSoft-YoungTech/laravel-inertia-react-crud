@@ -1,5 +1,5 @@
 import React from "react";
-import { useForm, usePage } from "@inertiajs/react";
+import { useForm, usePage, Link } from "@inertiajs/react";
 import Dashboard from "@/Components/Dashboard/Dashboard";
 
 function edit() {
@@ -215,6 +215,8 @@ function edit() {
                 </div>
             </div> */}
             <div className="card card-primary">
+            <Link href="/dashboard" className="btn btn-secondary w-20 my-1">Go back</Link>    
+
                 <div className="card-header">
                     <h3 className="card-title">Create New Product</h3>
                 </div>

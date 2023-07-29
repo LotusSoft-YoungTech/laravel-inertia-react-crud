@@ -19,7 +19,6 @@ export default function MainDashboard({ classname, auth, products }) {
             }   
         >
             <Head title="Dashboard" />
-
             {auth.user && (
                 <Link
                     className="btn btn-primary my-2"
