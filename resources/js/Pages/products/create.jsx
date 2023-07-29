@@ -37,12 +37,12 @@ function create() {
         <Dashboard>
             <div className="card card-primary">
             <Link href="/dashboard" className="btn btn-secondary w-20 my-1">Go back</Link>    
-                <div className="card-header">
+                <div className="card-header my-0">
                     <h3 className="card-title">Create New Product</h3>
                 </div>
-                <form onSubmit={handleSubmit} encType="multipart/form-data">
-                    <div className="card-body">
-                        <div className="form-group">
+                <form onSubmit={handleSubmit} encType="multipart/form-data" >
+                    <div className="card-body row my-0">
+                        <div className="form-group col-12 my-1">
                             <label htmlFor="name" className="form-label">
                                 Name
                             </label>
@@ -62,7 +62,7 @@ function create() {
                                 )}
                             </div>
                         </div>
-                        <div className="form-group ">
+                        <div className="form-group col-12 my-0">
                             <label htmlFor="description" className="form-label">
                                 Description
                             </label>
@@ -81,9 +81,9 @@ function create() {
                                 {errors.description}
                             </div>
                         )}
-                        <div className="form-group">
+                        <div className="form-group col-12 my-1">
                             <label htmlFor="brand" className="form-label">
-                                Genereic,Brand
+                                Genereic, Brand
                             </label>
                             <input
                                 type="text"
@@ -100,7 +100,7 @@ function create() {
                                 {errors.brand}
                             </div>
                         )}
-                        <div className="form-group">
+                        <div className="form-group col-3">
                             <label htmlFor="cp" className="form-label">
                                 Cost Price (in rs)
                             </label>
@@ -120,7 +120,7 @@ function create() {
                                 {errors.cost_price}
                             </div>
                         )}
-                        <div className="form-group">
+                        <div className="form-group col-3">
                             <label htmlFor="sp" className="form-label">
                                 Selling Price (in rs)
                             </label>
@@ -140,7 +140,7 @@ function create() {
                                 {errors.selling_price}
                             </div>
                         )}
-                        <div className="form-group">
+                        <div className="form-group col-3">
                             <label htmlFor="total_stock" className="form-label">
                                 Total stock
                             </label>
@@ -160,7 +160,7 @@ function create() {
                                 {errors.total_stock}
                             </div>
                         )}
-                        <div className="form-group">
+                        <div className="form-group col-3">
                             <label
                                 htmlFor="minimum-stock"
                                 className="form-label"
@@ -184,9 +184,9 @@ function create() {
                             </div>
                         )}
 
-                        <div className="form-group">
+                        <div className="form-group col-12">
                             <label htmlFor="exampleInputFile">
-                                ProductImage
+                                Product Image
                             </label>
                             <div className="input-group">
                                 <div className="custom-file">
@@ -230,7 +230,7 @@ function create() {
                     <div className="card-footer">
                         <button
                             type="submit"
-                            className="btn btn-primary bg-primary"
+                            className="btn btn-primary bg-primary w-100"
                         >
                             Submit
                         </button>
