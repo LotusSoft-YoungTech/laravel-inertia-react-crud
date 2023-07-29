@@ -29,9 +29,6 @@ export default function MainDashboard({ classname, auth, products }) {
                 </Link>
             )}
 
-            <div className="container">
-                {/* <Head title="Product lists" /> */}
-                <div className="row flex-column align-items-center">
                     <table id="product_table" className="table table-striped">
                         <thead>
                             <tr>
@@ -100,9 +97,7 @@ export default function MainDashboard({ classname, auth, products }) {
                             ))}
                         </tbody>
                     </table>
-                    
-                </div>
-            </div>
+            
         </AuthenticatedLayout>
       
         </Dashboard>

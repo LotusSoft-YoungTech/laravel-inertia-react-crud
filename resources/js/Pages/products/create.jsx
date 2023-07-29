@@ -60,7 +60,7 @@ function create() {
                                 )}
                             </div>
                         </div>
-                        <div className="form-group">
+                        <div className="form-group mt-2">
                             <label htmlFor="description" className="form-label">
                                 Description
                             </label>

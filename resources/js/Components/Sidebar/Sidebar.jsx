@@ -7,7 +7,7 @@ function Sidebar() {
                 {/* <!-- Brand Logo --> */}
                 <a href="index3.html" className="brand-link">
                     <img src="/dist/img/AdminLTELogo.png" className="brand-image img-circle elevation-3 " alt="fdf"  />
-                                      <span className="brand-text font-weight-light">AdminLTE 3</span>
+                                      <span className="brand-text font-weight-light">Admin Panel</span>
                 </a>
 
                 {/* <!-- Sidebar --> */}
@@ -23,7 +23,7 @@ function Sidebar() {
                         </div>
                         <div className="info">
                             <a href="#" className="d-block">
-                                Alexander Pierce
+                                Kaushal ghimire
                             </a>
                         </div>
                     </div>
